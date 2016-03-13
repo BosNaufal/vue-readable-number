@@ -43,7 +43,9 @@ Vue.filter('readable-number',{
 	    // join Array
 	    return string.join('');
 	  }
-
+		
+		// Prevent falling in undefined value
+		return val;
 	},
 
 	// Two Way Filter...
