@@ -8,6 +8,10 @@ Vue.filter('readable-number',{
 
 	// Become Readable Number in Views
 	read: function(val) {
+
+	  // Prevent falling in undefined value
+	  if(val === '' || val === undefined || val === NaN ) return 0;
+
 	  // if there's a truthy value..
 	  if(val){
 
@@ -43,7 +47,7 @@ Vue.filter('readable-number',{
 	    // join Array
 	    return string.join('');
 	  }
-		
+
 		// Prevent falling in undefined value
 		return val;
 	},
@@ -51,7 +55,9 @@ Vue.filter('readable-number',{
 	// Two Way Filter...
 	// become a integer in v-model
 	write: function(val) {
-		if(val == "") val = 0;
+	  // Prevent falling in undefined value
+	  if(val === '' || val === undefined || val === NaN ) return 0;
+
 		// make sure the val is string
 	  if(typeof val == 'string') {
 	    // remove non Word Character
